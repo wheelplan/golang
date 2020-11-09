@@ -14,4 +14,6 @@ func main() {
 
 	x, _ := strconv.Atoi(名字)
 	fmt.Println(x, reflect.TypeOf(x))
+
+	fmt.Println("Hello, Github !")
 }
