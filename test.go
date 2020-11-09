@@ -16,4 +16,6 @@ func main() {
 	fmt.Println(x, reflect.TypeOf(x))
 
 	fmt.Println("Hello, Github !")
+	fmt.Println("Over Game")
+	fmt.Println("I have a dream !")
 }
