@@ -1,20 +1,12 @@
 package main
 
-import (
-	"fmt"
-	"reflect"
-	"strconv"
-)
+import "fmt"
 
 func main() {
-	name := "13" +
-		"14"
-
-	fmt.Println(name, reflect.TypeOf(name))
-
-	x, _ := strconv.Atoi(name)
-	fmt.Println(x, reflect.TypeOf(x))
-
-	fmt.Println("Hello, Github !")
-	fmt.Println("Over Game")
+	var age byte = 'A'
+	var len uint8 = 11
+	var height rune = '\xa1'
+	fmt.Printf("%T, %v\n", age, age)
+	fmt.Printf("%T, %v\n", len, len)
+	fmt.Printf("%T, %v\n", height, height)
 }
