@@ -9,4 +9,5 @@ func main() {
 	fmt.Printf("%T, %v\n", age, age)
 	fmt.Printf("%T, %v\n", len, len)
 	fmt.Printf("%T, %v\n", height, height)
+	fmt.Println("Over")
 }
