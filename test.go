@@ -7,12 +7,12 @@ import (
 )
 
 func main() {
-	名字 := "13" +
+	name := "13" +
 		"14"
 
-	fmt.Println(名字, reflect.TypeOf(名字))
+	fmt.Println(name, reflect.TypeOf(name))
 
-	x, _ := strconv.Atoi(名字)
+	x, _ := strconv.Atoi(name)
 	fmt.Println(x, reflect.TypeOf(x))
 
 	fmt.Println("Hello, Github !")
