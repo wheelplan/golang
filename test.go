@@ -1,13 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
+
+type str string
+
+func test(c str) {
+	fmt.Println(c)
+}
 
 func main() {
-	var age byte = 'A'
-	var len uint8 = 11
-	var height rune = '\xa1'
-	fmt.Printf("%T, %v\n", age, age)
-	fmt.Printf("%T, %v\n", len, len)
-	fmt.Printf("%T, %v\n", height, height)
-	fmt.Println("Over")
+	const a = 0x200
+	fmt.Println(reflect.TypeOf(a), a, 256*3)
 }
