@@ -16,7 +16,7 @@ func mkslice() []int {
 }
 
 func mkmap() map[string]int {
-	m := make(map[string]int, 10)
+	m := make(map[string]int)
 	m["a"] = 1
 	return m
 }
