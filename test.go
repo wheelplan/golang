@@ -21,6 +21,17 @@ func main() {
 	var c int64 = int64(b)
 	fmt.Println(c)
 
-	var x error = nil
-	fmt.Println(x)
+	x := 100
+	p := (*int)(&x)
+	fmt.Println(*p)
+
+	type flags byte
+	const (
+		read flags = 3 << iota
+		write
+		exec
+	)
+	f := 2 | 5
+	fmt.Printf("%b && %b && %b\n", read, write, exec)
+	fmt.Printf("%b && %v\n", f, f)
 }
