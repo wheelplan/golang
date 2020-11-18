@@ -8,7 +8,7 @@ func main() {
 		fmt.Println(i)
 
 		if i > 0 {
-			goto exit // 注意：goto 不能跳转到其他函数，或内层代码块内
+			goto exit // 注意：goto 不能跳转到其他函数，或内层代码块内。
 		}
 	}
 exit:
