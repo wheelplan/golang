@@ -17,11 +17,10 @@ func main() {
 	}
 
 	// 无论普通 for 循环，还是 range 迭代，其定义的局部变量都会重复使用
-
 	for i, s := range data {
 		fmt.Println(&i, &s)
 	}
 	/*	0xc00000a0a8 0xc00003a250
 		0xc00000a0a8 0xc00003a250
-		0xc00000a0a8 0xc00003a250*/
+		0xc00000a0a8 0xc00003a250  */
 }
