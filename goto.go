@@ -12,5 +12,5 @@ func main() {
 		}
 	}
 exit:
-	fmt.Println("EXIT")
+	fmt.Println("EXIT") // 0 1 EXIT
 }
