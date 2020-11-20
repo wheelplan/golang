@@ -20,5 +20,4 @@ func main() {
 	a := []int{1, 2, 3}
 	testb(a[:]...)
 	fmt.Println(a)
-
 }
