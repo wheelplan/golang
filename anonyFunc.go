@@ -33,6 +33,7 @@ func testing() func(int, int) int {
 		return x + y
 	}
 }
+
 func testStruct() {
 	type cal struct {
 		mul func(x, y int) int
@@ -55,5 +56,4 @@ func testChannel() {
 	}
 
 	fmt.Println((<-c)(11, 22))
-
 }
