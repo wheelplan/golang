@@ -6,12 +6,12 @@ import (
 )
 
 func main() {
-	z, err := div(3, 1)
+	z, err := div(3, 0)
 
 	if err != nil {
 		switch e := err.(type) {
 		case DivError:
-			fmt.Println(e, e.x, e.y)
+			fmt.Printf("%d / %d , %s\n", e.x, e.y, e)
 		default:
 			fmt.Println(e)
 		}
@@ -26,7 +26,7 @@ type DivError struct {
 }
 
 func (DivError) Error() string {
-	return "Division by zero"
+	return "Division by zero !"
 }
 
 func div(x, y int) (int, error) {
