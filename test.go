@@ -1,23 +1,31 @@
 package main
 
 import (
-	"errors"
 	"fmt"
+	"reflect"
+	"unsafe"
 )
 
 func main() {
-	defer println("I Have A Dream" + " ! ")
-	defer println("Are you okay" + " ? ")
+	s := "I" +
+		"Aa"
 
-	a, b := 10, 10
-	c, err := div(a, b)
+	fmt.Println(s) // IAa
 
-	fmt.Println(c, err)
-}
+	fmt.Println(s == "IAa") // true
+	fmt.Println(s < "IAb")  // true
+	fmt.Println(s[2])       // 97
+	c := "灿" +
+		"CAN"
+	c1 := c[:3]
+	c2 := c[3:4]
+	c3 := c[4:5]
+	c4 := c[5:]
+	fmt.Println(c1, c2, c3, c4) // 灿 C A N
+	fmt.Printf("%#v\n", (*reflect.StringHeader)(unsafe.Pointer(&c)))
+	fmt.Printf("%#v\n", (*reflect.StringHeader)(unsafe.Pointer(&c1)))
 
-func div(a, b int) (int, error) {
-	if b == 0 {
-		return 0, errors.New("division by zero")
+	for _, s := range c {
+		fmt.Printf("%v ", s) // 28799 67 65 78
 	}
-	return a / b, nil
 }
