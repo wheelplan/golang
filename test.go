@@ -25,7 +25,12 @@ func main() {
 	fmt.Printf("%#v\n", (*reflect.StringHeader)(unsafe.Pointer(&c)))
 	fmt.Printf("%#v\n", (*reflect.StringHeader)(unsafe.Pointer(&c1)))
 
-	for _, s := range c {
+	for _, s := range c { // rune
 		fmt.Printf("%v ", s) // 28799 67 65 78
+	}
+
+	fmt.Printf("\n%d \n", len(c)) // type
+	for i := 0; i < len(c); i++ {
+		fmt.Println(c[i])
 	}
 }
