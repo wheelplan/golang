@@ -1,37 +1,23 @@
 package main
 
 import (
+	"errors"
 	"fmt"
-	"log"
 )
 
 func main() {
-	z, err := div(3, 1)
+	defer println("I Have A Dream" + " ! ")
+	defer println("Are you okay" + " ? ")
 
-	if err != nil {
-		switch e := err.(type) {
-		case DivError:
-			fmt.Println(e, e.x, e.y)
-		default:
-			fmt.Println(e)
-		}
-		log.Fatalln(err)
+	a, b := 10, 10
+	c, err := div(a, b)
+
+	fmt.Println(c, err)
+}
+
+func div(a, b int) (int, error) {
+	if b == 0 {
+		return 0, errors.New("division by zero")
 	}
-
-	fmt.Println(z)
-}
-
-type DivError struct {
-	x, y int
-}
-
-func (DivError) Error() string {
-	return "Division by zero"
-}
-
-func div(x, y int) (int, error) {
-	if y == 0 {
-		return 0, DivError{x, y}
-	}
-	return x / y, nil
+	return a / b, nil
 }
