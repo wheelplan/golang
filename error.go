@@ -35,3 +35,6 @@ func div(x, y int) (int, error) {
 	}
 	return x / y, nil
 }
+
+//3 / 0 , Division by zero !
+//2020/11/25 08:33:26 Division by zero !
