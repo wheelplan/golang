@@ -62,7 +62,7 @@ import "fmt"
 func main() {
 	var bs []byte
 	bs = append(bs, "ABC"...) // append 函数将 string 追加到 []byte 内
-	fmt.Println(bs)
+	fmt.Println(bs)           // [65 66 67]
 
 	// 将 []byte 转换为 string key
 	m := map[string]int{
@@ -71,5 +71,5 @@ func main() {
 
 	key := []byte("abc")
 	x, ok := m[string(key)]
-	fmt.Println(x, ok)
+	fmt.Println(x, ok) // 123 true
 }
