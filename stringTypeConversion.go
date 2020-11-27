@@ -57,7 +57,9 @@ func pp(format string, ptr interface{}) {
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	var bs []byte
