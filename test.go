@@ -1,20 +1,36 @@
 package main
 
-import testing2 "testing"
+import (
+	"fmt"
+	"io"
+	"os"
+)
 
 func main() {
-}
-
-func test() string {
-	var s string
-	for i := 0; i < 1000; i++ {
-		s += "a"
+	f, err := os.Open("./test.go")
+	if err != nil {
+		fmt.Println("Open file failed", err)
+		return
 	}
-	return s
-}
 
-func BenchmarkTest(b *testing2.B) {
-	for i := 0; i < b.N; i++ {
-		test()
+	defer f.Close()
+
+	var tmp []byte
+	var buf [128]byte
+
+	for {
+		n, err := f.Read(buf[:])
+		if err != nil && err != io.EOF {
+			fmt.Println("read file failed", err)
+			return
+		}
+
+		if n == 0 {
+			break
+		}
+
+		tmp = append(tmp, buf[:n]...)
 	}
+	fmt.Println(string(tmp))
+
 }

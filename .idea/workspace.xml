@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c50177f6-79bf-4e8f-9e4d-cc1bcd4c24a0" name="Default Changelist" comment="" />
+    <list default="true" id="c50177f6-79bf-4e8f-9e4d-cc1bcd4c24a0" name="Default Changelist" comment=".">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go Application" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
@@ -17,15 +45,112 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go Application" />
+    <property name="GO_FMT" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="RunManager" selected="Go Build.go build goNotes">
+    <configuration name="go build goNotes" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="goNotes" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/test.go" />
+      <package value="goNotes" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build goNotes" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="492" y="131" key="#go_build_goNotes" timestamp="1605002669910">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state x="492" y="131" key="#go_build_goNotes/0.0.1504.1003@0.0.1504.1003" timestamp="1605002669910" />
+    <state x="492" y="131" key="#go_build_goNotes_" timestamp="1605358823690">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state x="492" y="131" key="#go_build_goNotes_(1)" timestamp="1605358771540">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state x="492" y="131" key="#go_build_goNotes_(1)/0.0.1504.1003@0.0.1504.1003" timestamp="1605358771540" />
+    <state x="492" y="131" key="#go_build_goNotes_/0.0.1504.1003@0.0.1504.1003" timestamp="1605358823690" />
+    <state width="1460" height="269" key="GridCell.Tab.0.bottom" timestamp="1607411148217">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state width="1460" height="269" key="GridCell.Tab.0.bottom/0.0.1504.1003@0.0.1504.1003" timestamp="1607411148217" />
+    <state width="1460" height="269" key="GridCell.Tab.0.center" timestamp="1607411148216">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state width="1460" height="269" key="GridCell.Tab.0.center/0.0.1504.1003@0.0.1504.1003" timestamp="1607411148216" />
+    <state width="1460" height="269" key="GridCell.Tab.0.left" timestamp="1607411148215">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state width="1460" height="269" key="GridCell.Tab.0.left/0.0.1504.1003@0.0.1504.1003" timestamp="1607411148215" />
+    <state width="1460" height="269" key="GridCell.Tab.0.right" timestamp="1607411148216">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state width="1460" height="269" key="GridCell.Tab.0.right/0.0.1504.1003@0.0.1504.1003" timestamp="1607411148216" />
+    <state width="1460" height="333" key="GridCell.Tab.1.bottom" timestamp="1607410298389">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state width="1460" height="333" key="GridCell.Tab.1.bottom/0.0.1504.1003@0.0.1504.1003" timestamp="1607410298389" />
+    <state width="1460" height="333" key="GridCell.Tab.1.center" timestamp="1607410298389">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state width="1460" height="333" key="GridCell.Tab.1.center/0.0.1504.1003@0.0.1504.1003" timestamp="1607410298388" />
+    <state width="1460" height="333" key="GridCell.Tab.1.left" timestamp="1607410298388">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state width="1460" height="333" key="GridCell.Tab.1.left/0.0.1504.1003@0.0.1504.1003" timestamp="1607410298388" />
+    <state width="1460" height="333" key="GridCell.Tab.1.right" timestamp="1607410298389">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state width="1460" height="333" key="GridCell.Tab.1.right/0.0.1504.1003@0.0.1504.1003" timestamp="1607410298389" />
+    <state x="144" y="83" key="MergeDialog" timestamp="1607407788683">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state x="144" y="83" key="MergeDialog/0.0.1504.1003@0.0.1504.1003" timestamp="1607407788683" />
+    <state x="345" y="235" key="Vcs.Push.Dialog.v2" timestamp="1605358715452">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state x="345" y="235" key="Vcs.Push.Dialog.v2/0.0.1504.1003@0.0.1504.1003" timestamp="1605358715452" />
+    <state x="576" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607407768795">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state x="576" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1504.1003@0.0.1504.1003" timestamp="1607407768795" />
+    <state x="511" y="292" key="git4idea.merge.GitPullDialog" timestamp="1605320475671">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state x="511" y="292" key="git4idea.merge.GitPullDialog/0.0.1504.1003@0.0.1504.1003" timestamp="1605320475671" />
   </component>
 </project>
