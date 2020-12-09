@@ -3,12 +3,14 @@ package main
 import (
 	"fmt"
 	"io"
+	"io/ioutil"
 	"os"
 )
 
 func main() {
 
 	//readOne("C:\\GoProgram\\src\\tt\\goNotes\\readFile.go")
+	readTwo("C:\\GoProgram\\src\\tt\\goNotes\\readFile.go")
 
 }
 
@@ -41,5 +43,9 @@ func readOne(s string) {
 }
 
 func readTwo(s string) {
-
+	f, err := ioutil.ReadFile(s)
+	if err != nil {
+		panic("Open file failed.")
+	}
+	fmt.Println(string(f))
 }
