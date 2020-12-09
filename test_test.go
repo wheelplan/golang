@@ -2,7 +2,7 @@ package main
 
 import testing2 "testing"
 
-func test11() string {
+func test() string {
 	var s string
 	for i := 0; i < 1000; i++ {
 		s += "a"
@@ -12,7 +12,7 @@ func test11() string {
 
 func BenchmarkTest(b *testing2.B) {
 	for i := 0; i < b.N; i++ {
-		test11()
+		test()
 	}
 }
 
