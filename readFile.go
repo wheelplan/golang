@@ -13,7 +13,7 @@ func main() {
 	//readOne("C:\\GoProgram\\src\\tt\\goNotes\\readFile.go")
 	//readTwo("C:\\GoProgram\\src\\tt\\goNotes\\readFile.go")
 	//readThree("C:\\GoProgram\\src\\tt\\goNotes\\readFile.go")
-	readFour("C:\\GoProgram\\src\\tt\\goNotes\\readFile.go")
+	readFour("./readFile.go")
 }
 
 func readOne(s string) {
