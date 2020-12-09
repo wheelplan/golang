@@ -9,10 +9,10 @@ import (
 )
 
 func main() {
-	//writeOne("./writeFileTest.go")
+	writeOne("./writeFileTest.go")
 	//writeTwo("./writeFileTest.go")
 	//writeThree("./writeFileTest.go")
-	writeFour("./writeFileTest.go")
+	//writeFour("./writeFileTest.go")
 }
 
 func checkFileExist(filename string) bool {
@@ -112,6 +112,7 @@ func writeFour(s string) {
 		fmt.Println("file create failed", err)
 		return
 	}
+
 	defer f.Close()
 	w := bufio.NewWriter(f)
 	n, err := w.WriteString(content)
