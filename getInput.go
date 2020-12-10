@@ -7,26 +7,35 @@ import (
 )
 
 func main() {
-	//userScan()
-	userBufio()
+	userScan()
+	//userScanln()
+	//userBufio()
 }
 
 func userScan() {
-	var s string
+	var name string
 	fmt.Print("please input your name: ")
 
-	fmt.Scan(&s)
-	fmt.Printf("Hi, %s, Are you okay ?", s)
+	fmt.Scan(&name)
+	fmt.Printf("Hi, %s, Are you okay ?", name)
+}
+
+func userScanln() {
+	var name string
+	fmt.Print("please input your name: ")
+
+	fmt.Scanln(&name)
+	fmt.Printf("Hi, %s, Are you okay ?", name)
 }
 
 func userBufio() {
 	fmt.Print("please input your name: ")
 	reader := bufio.NewReader(os.Stdin)
-	s, err := reader.ReadString('\n')
+	name, err := reader.ReadString('\n')
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	fmt.Printf("Hi, %s, Are you okay ?", s)
+	fmt.Printf("Hi, %s, Are you okay ?", name)
 }
