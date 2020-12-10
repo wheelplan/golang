@@ -16,7 +16,11 @@ func userScan() {
 	var name string
 	fmt.Print("please input your name: ")
 
-	fmt.Scan(&name)
+	_, err := fmt.Scan(&name)
+	if err != nil {
+		panic(err)
+	}
+
 	fmt.Printf("Hi, %s, Are you okay ?", name)
 }
 
@@ -24,7 +28,11 @@ func userScanln() {
 	var name string
 	fmt.Print("please input your name: ")
 
-	fmt.Scanln(&name)
+	_, err := fmt.Scanln(&name)
+	if err != nil {
+		panic(err)
+	}
+
 	fmt.Printf("Hi, %s, Are you okay ?", name)
 }
 
