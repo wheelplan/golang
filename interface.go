@@ -41,7 +41,7 @@ func main() {
 }*/
 
 // 超集接口可隐式转换为子集，反过来则不行
-package main
+/*package main
 
 import "fmt"
 
@@ -78,4 +78,33 @@ func main() {
 	fmt.Println(t2.string())
 
 	// var t3 tester = t2   // stringer does not implement tester (missing test method)
+}*/
+
+// 匿名接口类型可直接用于变量定义或作为结构字段类型
+package main
+
+import "fmt"
+
+type data struct{}
+
+type node struct {
+	data interface {
+		string() string
+	}
+}
+
+func main() {
+	var t interface {
+		string() string
+	} = data{}
+
+	n := node{
+		data: t,
+	}
+
+	fmt.Println(n.data.string())
+}
+
+func (data) string() string {
+	return "B"
 }
