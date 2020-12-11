@@ -1,4 +1,4 @@
-package main
+/*package main
 
 import "fmt"
 
@@ -38,4 +38,44 @@ func main() {
 
 	var q printer = &m
 	q.print()
+}*/
+
+// 超集接口可隐式转换为子集，反过来则不行
+package main
+
+import "fmt"
+
+type stringer interface {
+	string() string
+}
+
+type tester interface {
+	stringer
+	test()
+}
+
+type data struct{}
+
+func (data) string() string {
+	return "A"
+}
+
+func (*data) test() {}
+
+func pp(a stringer) {
+	fmt.Println(a.string())
+}
+
+func main() {
+	var d data
+	var t1 tester = &d
+	pp(t1)
+
+	t1.test()
+	fmt.Println(t1.string())
+
+	var t2 stringer = t1
+	fmt.Println(t2.string())
+
+	// var t3 tester = t2   // stringer does not implement tester (missing test method)
 }
