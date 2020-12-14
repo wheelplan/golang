@@ -19,11 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c50177f6-79bf-4e8f-9e4d-cc1bcd4c24a0" name="Default Changelist" comment=".">
-      <change afterPath="$PROJECT_DIR$/测试-两数之和.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test.go" afterDir="false" />
-    </list>
+    <list default="true" id="c50177f6-79bf-4e8f-9e4d-cc1bcd4c24a0" name="Default Changelist" comment="." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -161,14 +157,14 @@
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
     <state x="144" y="83" key="MergeDialog/0.0.1504.1003@0.0.1504.1003" timestamp="1607407788683" />
-    <state x="345" y="235" key="Vcs.Push.Dialog.v2" timestamp="1607411192825">
+    <state x="345" y="235" key="Vcs.Push.Dialog.v2" timestamp="1607927738329">
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
-    <state x="345" y="235" key="Vcs.Push.Dialog.v2/0.0.1504.1003@0.0.1504.1003" timestamp="1607411192825" />
-    <state x="576" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607842227163">
+    <state x="345" y="235" key="Vcs.Push.Dialog.v2/0.0.1504.1003@0.0.1504.1003" timestamp="1607927738329" />
+    <state x="576" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607927933545">
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
-    <state x="576" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1504.1003@0.0.1504.1003" timestamp="1607842227163" />
+    <state x="576" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1504.1003@0.0.1504.1003" timestamp="1607927933545" />
     <state x="511" y="292" key="git4idea.merge.GitPullDialog" timestamp="1605320475671">
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
