@@ -2,31 +2,22 @@ package main
 
 import "fmt"
 
-type tester interface {
-	test()
-	string() string
-}
+func twoSum(nums []int, target int) []int {
 
-type data struct{}
-type sdb string
-
-func (d *data) test() {}
-
-func (data) string() string {
-	return "A"
+	for i, _ := range nums {
+		for j := i + 1; j < len(nums); j++ {
+			if nums[i]+nums[j] == target {
+				return []int{i, j}
+			}
+		}
+	}
+	return nil
 }
 
 func main() {
 
-	var d data
-	var t tester = &d
+	var nums []int = []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+	var target int = 7
+	fmt.Println(twoSum(nums, target))
 
-	t.test()
-	fmt.Println(t.string())
-
-	var t1, t2 interface{}
-	fmt.Println(t1 == t2)
-
-	t1, t2 = [2]int{1, 1}, [2]int{1, 1}
-	fmt.Println(t1 == t2)
 }
