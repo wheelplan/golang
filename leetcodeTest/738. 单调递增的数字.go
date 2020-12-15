@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	res := monotoneIncreasingDigits(1234)
+	res := monotoneIncreasingDigits(12313134)
 	fmt.Println(res)
 }
 
