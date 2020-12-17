@@ -2,40 +2,30 @@ package main
 
 import (
 	"fmt"
-	"strings"
 )
 
 func main() {
-
-	pattern := "absba"
-	s := "cat dog dog dog cat"
-
-	fmt.Println(wordPattern(pattern, s))
-
+	str := "22a115f11"
+	fmt.Println(lengthOfLongestSubstring(str))
 }
 
-func wordPattern(pattern string, s string) bool {
-	m := make(map[byte]string)
+func lengthOfLongestSubstring(s string) int {
+	m := make(map[byte]int)
+	var endPoint, res int
 
-	words := strings.Split(s, " ")
-	if len(pattern) != len(words) {
-		return false
-	}
+	for startPoint := 0; startPoint < len(s); startPoint++ {
+		if startPoint != 0 {
+			delete(m, s[startPoint-1])
+		}
 
-	for i := 0; i < len(words); i++ {
+		for endPoint < len(s) && m[s[endPoint]] == 0 {
+			m[s[endPoint]]++
+			endPoint++
+		}
 
-		if m[pattern[i]] == "" {
-			m[pattern[i]] = words[i]
-			for j := i - 1; j >= 0; j-- {
-				if words[i] == words[j] {
-					return false
-				}
-			}
-		} else {
-			if m[pattern[i]] != words[i] {
-				return false
-			}
+		if res < endPoint-startPoint {
+			res = endPoint - startPoint
 		}
 	}
-	return true
+	return res
 }
