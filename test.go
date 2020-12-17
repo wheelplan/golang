@@ -1,31 +1,27 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	str := "22a115f11"
-	fmt.Println(lengthOfLongestSubstring(str))
+	prices := []int{1, 3, 2, 8, 4, 9}
+	fee := 2
+	fmt.Println(maxProfit(prices, fee))
 }
 
-func lengthOfLongestSubstring(s string) int {
-	m := make(map[byte]int)
-	var endPoint, res int
+func maxProfit(prices []int, fee int) int {
+	m := -prices[0]
+	n := 0
 
-	for startPoint := 0; startPoint < len(s); startPoint++ {
-		if startPoint != 0 {
-			delete(m, s[startPoint-1])
-		}
-
-		for endPoint < len(s) && m[s[endPoint]] == 0 {
-			m[s[endPoint]]++
-			endPoint++
-		}
-
-		if res < endPoint-startPoint {
-			res = endPoint - startPoint
-		}
+	for i := 1; i < len(prices); i++ {
+		m, n = max(m, n-prices[i]), max(n, prices[i]+m-fee)
 	}
-	return res
+	return n
+}
+
+func max(x, y int) int {
+	if x > y {
+		return x
+	} else {
+		return y
+	}
 }
