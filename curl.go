@@ -24,4 +24,6 @@ func main() {
 	if err := r.Body.Close(); err != nil {
 		fmt.Println(err)
 	}
+
+	fmt.Printf("\n%v\n", r.Status)
 }
