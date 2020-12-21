@@ -7,7 +7,7 @@ func main() {
 	f()
 }
 
-func test(x,y int) func() {
+func test(x, y int) func() {
 	return func() {
 		println(x + y)
 	}

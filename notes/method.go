@@ -15,8 +15,8 @@ func main() {
 }*/
 
 type users struct {
-	name	string
-	age		byte
+	name string
+	age  byte
 }
 
 func (u users) toString() string {
@@ -25,13 +25,13 @@ func (u users) toString() string {
 
 type managers struct {
 	users
-	title	string
+	title string
 }
 
 func main() {
 	var m managers
-	m.name 	= "Alan"
-	m.age	= 15
+	m.name = "Alan"
+	m.age = 15
 
 	println(m.toString())
 }

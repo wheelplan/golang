@@ -7,7 +7,7 @@ func main() {
 	go consumer(data, done)
 	go producer(data)
 
-	<- done
+	<-done
 }
 
 func consumer(data chan int, done chan bool) {
