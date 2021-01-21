@@ -2,35 +2,27 @@ package main
 
 import (
 	"fmt"
-	"io"
+	"log"
 	"os"
-	"strings"
 )
 
+func init() {
+	log.SetPrefix("[ YUIYA ] ")
+	log.SetFlags(log.Ldate | log.Lmicroseconds | log.Lshortfile)
+}
+
 func main() {
-	// 从普通文件读取
-	file, _ := os.Open("C:\\GoProgram\\src\\goNotes\\notes\\test.go")
-	data, err := readFrom(file, 12)
-	if err != nil {
-		fmt.Println(err)
-	}
 
-	fmt.Println(string(data))
-
-	// 从标准输入读取
-	data, err = readFrom(os.Stdin, 12)
-	fmt.Println(string(data))
-
-	// 从字符串读取
-	data, err = readFrom(strings.NewReader("from string"), 12)
-	fmt.Println(string(data))
+	log.Println("Are you okay.")
 }
 
-func readFrom(reader io.Reader, num int) ([]byte, error) {
-	p := make([]byte, num)
-	n, err := reader.Read(p)
-	if n > 0 {
-		return p[:n], nil
-	}
-	return p, err
+func print(a ...interface{}) (n int, err error) {
+	return fmt.Fprintln(os.Stdout, a...)
 }
+
+//func WriteFrom(writer io.Writer, a... interface{}) ([]byte, error) {
+//	n, err := writer.Write()
+//	if n > 0 {
+//		return p[:n], nil
+//	}
+//}
