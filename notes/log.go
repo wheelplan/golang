@@ -10,6 +10,13 @@ func init() {
 }
 
 func main() {
+	// 先使用 Print 记录日志，然后调用 panic() 函数抛出一个恐慌，
+	// 这时候除非使用 recover() 函数，否则程序就会打印错误堆栈信息，然后程序终止。
+	// log.Panic("panic.")
+
+	// 记录日志后，程序退出
+	log.Fatal("error.")
+
 	log.Println("Are you okay.")
 }
 
