@@ -1,28 +1,18 @@
 package main
 
 import (
-	"fmt"
-	"log"
+	"bufio"
 	"os"
 )
 
-func init() {
-	log.SetPrefix("[ YUIYA ] ")
-	log.SetFlags(log.Ldate | log.Lmicroseconds | log.Lshortfile)
-}
-
 func main() {
+	file, err := os.Open("C:\\GoProgram\\src\\goNotes\\notes\\test.go")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+	writer := bufio.NewWriter(os.Stdout)
+	writer.ReadFrom(file)
+	writer.Flush()
 
-	log.Println("Are you okay.")
 }
-
-func print(a ...interface{}) (n int, err error) {
-	return fmt.Fprintln(os.Stdout, a...)
-}
-
-//func WriteFrom(writer io.Writer, a... interface{}) ([]byte, error) {
-//	n, err := writer.Write()
-//	if n > 0 {
-//		return p[:n], nil
-//	}
-//}
