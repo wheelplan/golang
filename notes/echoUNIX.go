@@ -5,11 +5,9 @@ package main
 import (
 	"fmt"
 	"os"
-	"strings"
 )
 
-/*func main() {
-
+func main() {
 	var s, sep string
 	sep = " "
 
@@ -19,9 +17,7 @@ import (
 
 	fmt.Println(s)
 }
-*/
 
-func main() {
-
-	fmt.Println(strings.Join(os.Args[1:], " "))
-}
+//func main() {
+//	fmt.Println(strings.Join(os.Args[1:], " "))
+//}
