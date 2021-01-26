@@ -1,44 +1,14 @@
-//package main
-//
-//import (
-//	"fmt"
-//)
-//
-//func main() {
-//	stack()
-//	heap()
-//
-//
-//}
-//
-//func stack() {
-//	v := "stack"
-//	var stack *string = &v
-//	fmt.Println(stack)
-//}
-//
-//func heap() {
-//	h := "heap"
-//	heap := new(string)
-//	heap = &h
-//	fmt.Println(heap)
-//}
 package main
 
 import "fmt"
 
 func main() {
-	a := 1
-	b := 2
-	var c *int = &a
-	*c = b
-	fmt.Println(*c)
 
-	d := new(int)
-	*d = 100
-	fmt.Println(*d)
+	sli := []int{1, 2, 3, 4, 5, 6, 7}
 
-	//var b map[string]int
-	//b["沙河娜扎"] = 100
-	//fmt.Println(b)
+	s := sli[1:5:7]
+
+	fmt.Println("s: ", s)
+	fmt.Println("length: ", len(s))
+	fmt.Println("capacity: ", cap(s))
 }
