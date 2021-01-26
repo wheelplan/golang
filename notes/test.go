@@ -30,7 +30,7 @@ func main() {
 			fmt.Println(n, line)
 		}
 	}
-	// test1
+	// te
 }
 
 func countlines(f *os.File, counts map[string]int) {
@@ -38,5 +38,5 @@ func countlines(f *os.File, counts map[string]int) {
 	for input.Scan() {
 		counts[input.Text()]++
 	}
-	// test1
+	// te
 }
