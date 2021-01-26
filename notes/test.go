@@ -1,27 +1,25 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
+	"io/ioutil"
 	"os"
+	"strings"
 )
 
 func main() {
+
 	counts := make(map[string]int)
 
-	files := os.Args[1:]
+	for _, filename := range os.Args[1:] {
+		data, err := ioutil.ReadFile(filename)
+		if err != nil {
+			fmt.Println("read file failed", err)
+			continue
+		}
 
-	if len(files) == 0 {
-		countlines(os.Stdin, counts)
-	} else {
-		for _, arg := range files {
-			f, err := os.Open(arg)
-			if err != nil {
-				fmt.Println(os.Stderr, err)
-				continue
-			}
-			countlines(f, counts)
-			f.Close()
+		for _, line := range strings.Split(string(data), "\n") {
+			counts[line]++
 		}
 	}
 
@@ -29,12 +27,6 @@ func main() {
 		if n > 1 {
 			fmt.Println(n, line)
 		}
-	}
-}
 
-func countlines(f *os.File, counts map[string]int) {
-	input := bufio.NewScanner(f)
-	for input.Scan() {
-		counts[input.Text()]++
 	}
 }
