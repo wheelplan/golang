@@ -21,14 +21,25 @@ func main() {
 
 	fmt.Println("file mode: ", fileMode)
 
-	file.Chmod(0600 | os.ModeSticky)
+	file.Chmod(0666 | os.ModeSticky)
 
 	log.Println("Change after, file mode : ", getFileMode(file))
 
-	linkERR := os.Rename(filename, "./doc/link.txt")
-	if linkERR != nil {
-		log.Println(linkERR)
+	//linkERR := os.Link(filename, "./doc/link.txt")
+	//if linkERR != nil {
+	//	log.Println(linkERR)
+	//}
+
+	symlink := os.Symlink(filename, "./doc/chmod-link.txt")
+	if symlink != nil {
+		fmt.Println(symlink)
 	}
+	linkPath, err := os.Readlink("./doc/chmod-link.txt")
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	fmt.Println(linkPath)
 
 }
 
