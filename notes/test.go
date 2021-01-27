@@ -8,7 +8,9 @@ import (
 
 func main() {
 
-	file, err := os.Create("./doc/chmod.txt")
+	filename := "./doc/chmod.txt"
+
+	file, err := os.Create(filename)
 	if err != nil {
 		log.Fatal("create file err, ", err)
 	}
@@ -19,9 +21,14 @@ func main() {
 
 	fmt.Println("file mode: ", fileMode)
 
-	file.Chmod(fileMode | os.ModeExclusive)
+	file.Chmod(0600 | os.ModeSticky)
 
 	log.Println("Change after, file mode : ", getFileMode(file))
+
+	linkERR := os.Rename(filename, "./doc/link.txt")
+	if linkERR != nil {
+		log.Println(linkERR)
+	}
 
 }
 
