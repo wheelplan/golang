@@ -2,43 +2,34 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
-	"syscall"
-	"time"
 )
 
 func main() {
 
-	filename := "./doc/poem.txt"
-	file, err := os.OpenFile(filename, os.O_RDWR, 0666)
+	file, err := os.Create("./doc/chmod.txt")
+	if err != nil {
+		log.Fatal("create file err, ", err)
+	}
+
+	defer file.Close()
+
+	fileMode := getFileMode(file)
+
+	fmt.Println("file mode: ", fileMode)
+
+	file.Chmod(fileMode | os.ModeExclusive)
+
+	log.Println("Change after, file mode : ", getFileMode(file))
+
+}
+
+func getFileMode(file *os.File) os.FileMode {
+
+	fileInfo, err := file.Stat()
 	if err != nil {
 		fmt.Println(err)
 	}
-
-	buf := []byte{'1', '2', '3', '5', ' ', 'a', 'l', 'a', 'n'}
-	var tmp []byte
-
-	file.Seek(0, os.SEEK_END)
-	n, err := file.Write(buf[:])
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	tmp = append(tmp, buf[:n]...)
-
-	fmt.Println(string(tmp))
-
-	fmt.Println("end")
-	file.Seek(-4, os.SEEK_END)
-	file.Truncate(1)
-	a, err := os.Stat(filename)
-	fmt.Println(a.Name())
-	info := a.Sys().(*syscall.StartupInfo)
-	fmt.Println(info)
-
-	error := os.Chtimes(filename, time.Now(), time.Now())
-	if err != nil {
-		fmt.Println(error)
-	}
-
+	return fileInfo.Mode()
 }
