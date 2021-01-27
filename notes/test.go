@@ -43,6 +43,8 @@ func main() {
 
 }
 
+//
+
 func getFileMode(file *os.File) os.FileMode {
 
 	fileInfo, err := file.Stat()
