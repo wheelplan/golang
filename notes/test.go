@@ -33,3 +33,5 @@ func getFileMode(file *os.File) os.FileMode {
 	}
 	return fileInfo.Mode()
 }
+
+//
