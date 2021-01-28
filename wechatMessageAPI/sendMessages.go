@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -11,13 +12,15 @@ import (
 
 func main() {
 
-	corpid := "wwd327d0ea50c0dae0"
-	appsecret := "1kJw7t38aUxb3doG7IaLGVwOsDEuDHOMFUO2Z0xa_lI"
-	agentid := 1000008
-	toparty := os.Args[1]
+	/*	corpid := "wwd327d0ea50c0dae0"
+		appsecret := "1kJw7t38aUxb3doG7IaLGVwOsDEuDHOMFUO2Z0xa_lI"
+		agentid := 1000008
+		toparty := os.Args[1]
 
-	accessToken := GetToken(corpid, appsecret)
-	SendMSG(accessToken, agentid, toparty)
+		accessToken := GetToken(corpid, appsecret)
+		SendMSG(accessToken, agentid, toparty)*/
+
+	fmt.Println(GetCoinPrice("ethusdt"))
 
 }
 
@@ -93,4 +96,40 @@ func SendMSG(accessToken string, agentid int, toparty string) {
 		body, _ := ioutil.ReadAll(req.Body)
 		log.Println("response Body:", string(body))
 	}
+}
+
+func GetCoinPrice(coin string) float64 {
+	priceAPI := "https://api.huobi.pro/market/trade?symbol=" + coin
+
+	r, err := http.Get(priceAPI)
+	if err != nil {
+		log.Fatalln("Get Coin Price http.Get ERROR ! ", err)
+	}
+
+	defer r.Body.Close()
+	type coinPrice struct {
+		Ch     int    `json:"ch"`
+		Status string `json:"status"`
+		Ts     string `json:"ts"`
+		Tick   struct {
+			ID   string `json:"id"`
+			Ts1  string `json:"ts"`
+			Data struct {
+				Id        string  `json:"id"`
+				Ts2       string  `json:"ts"`
+				TradeId   string  `json:"trade-id"`
+				Amount    float64 `json:"amount"`
+				Price     float64 `json:"price"`
+				Direction string  `json:"direction"`
+			} `json:"data"`
+		} `json:"tick"`
+	}
+
+	var coinprice coinPrice
+	jsonERR := json.NewDecoder(r.Body).Decode(&coinprice)
+	if jsonERR != nil {
+		log.Fatalln("Get Coin Price json.NewDecoder.Decode ERR ! ", jsonERR)
+	}
+
+	return coinprice.Tick.Data.Price
 }
