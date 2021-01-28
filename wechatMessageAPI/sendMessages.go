@@ -14,38 +14,38 @@ func main() {
 	appsecret := "1kJw7t38aUxb3doG7IaLGVwOsDEuDHOMFUO2Z0xa_lI"
 	agentid := 1000008
 	toparty := os.Args[1]
-	accessToken := GetToken(corpid, appsecret)
+	accessToken, _ := GetToken(corpid, appsecret)
 	SendMSG(accessToken, agentid, toparty)
 }
 
-func GetToken(corpid, appsecret string) string {
+func GetToken(corpid, appsecret string) (string, error) {
 	tokenURL := "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=" + corpid + "&corpsecret=" + appsecret
 
 	r, err := http.Get(tokenURL)
 	if err != nil {
-		fmt.Println("http.Get bad ! ", err)
-		return "http.GET ERR"
+		return "Get Token http.Get ERROR ! ", err
 	}
+	defer r.Body.Close()
+
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
-		fmt.Println("r.Body ERR ! ", err)
+		fmt.Println("Get Token r.Body ERROR ! ", err)
 	}
-	r.Body.Close()
 
-	type tokenData struct {
+	type tokenBody struct {
 		ErrCode     int    `json:"errcode"`
 		ErrMsg      string `json:"errmsg"`
 		AccessToken string `json:"access_token"`
 		ExpiresIn   int    `json:"expires_in"`
 	}
 
-	var token tokenData
+	var token tokenBody
 	jsonERR := json.Unmarshal(body, &token)
 	if err != nil {
-		fmt.Println("json.Unmarshal ERR ! ", jsonERR)
+		fmt.Println("Get Token json.Unmarshal ERR ! ", jsonERR)
 	}
 
-	return token.AccessToken
+	return token.AccessToken, nil
 }
 
 func SendMSG(accessToken string, agentid int, toparty string) {
@@ -79,7 +79,7 @@ func SendMSG(accessToken string, agentid int, toparty string) {
 
 	req, err := http.NewRequest("POST", sendURL, bytes.NewBuffer(paramsJSON))
 	if err != nil {
-		fmt.Println("HTTP POST ERR ! ", err)
+		fmt.Println("SendMSG HTTP POST ERR ! ", err)
 	}
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("charset", "UTF-8")
