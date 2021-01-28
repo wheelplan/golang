@@ -3,25 +3,36 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
+	"strconv"
+	"time"
 )
 
 func main() {
 
-	/*	corpid := "wwd327d0ea50c0dae0"
-		appsecret := "1kJw7t38aUxb3doG7IaLGVwOsDEuDHOMFUO2Z0xa_lI"
-		agentid := 1000008
-		toparty := os.Args[1]
+	corpid := "wwd327d0ea50c0dae0"
+	appsecret := "1kJw7t38aUxb3doG7IaLGVwOsDEuDHOMFUO2Z0xa_lI"
+	agentid := 1000008
+	toparty := os.Args[1]
 
-		accessToken := GetToken(corpid, appsecret)
-		SendMSG(accessToken, agentid, toparty)*/
+	accessToken := GetToken(corpid, appsecret)
 
-	fmt.Println(GetCoinPrice("ethusdt"))
+	coinPrice := GetCoinPrice("ethusdt")
+	expectedPrice := 1250.0
+	msg := "ETH Coin Price is $" + strconv.FormatFloat(coinPrice, 'E', -1, 64)
+	message := []string{"ETH Coin Price is $", msg}
 
+	for {
+		if coinPrice < expectedPrice {
+			SendMSG(accessToken, agentid, toparty, message)
+			expectedPrice = expectedPrice * 0.99
+		}
+
+		time.Sleep(time.Duration(6) * time.Second)
+	}
 }
 
 func GetToken(corpid, appsecret string) string {
@@ -51,13 +62,13 @@ func GetToken(corpid, appsecret string) string {
 	return token.AccessToken
 }
 
-func SendMSG(accessToken string, agentid int, toparty string) {
+func SendMSG(accessToken string, agentid int, toparty string, message []string) {
 
 	sendURL := "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=" + accessToken
 
-	var message string
-	for _, arg := range os.Args[2:] {
-		message += arg + "\n"
+	var messages string
+	for _, arg := range message[:] {
+		messages += arg + "\n"
 	}
 
 	type Params struct {
@@ -76,7 +87,7 @@ func SendMSG(accessToken string, agentid int, toparty string) {
 		Agentid: agentid,
 		Text: struct {
 			Content string `json:"content"`
-		}{Content: message},
+		}{Content: messages},
 		Safe: 0,
 	}
 
