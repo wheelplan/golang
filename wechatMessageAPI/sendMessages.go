@@ -3,8 +3,8 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 )
@@ -27,15 +27,10 @@ func GetToken(corpid, appsecret string) string {
 
 	r, err := http.Get(tokenURL)
 	if err != nil {
-		fmt.Println("Get Token http.Get ERROR ! ", err)
+		log.Fatalln("Get Token http.Get ERROR ! ", err)
 	}
 
 	defer r.Body.Close()
-
-	body, err := ioutil.ReadAll(r.Body)
-	if err != nil {
-		fmt.Println("Get Token r.Body ERROR ! ", err)
-	}
 
 	type tokenBody struct {
 		ErrCode     int    `json:"errcode"`
@@ -45,9 +40,9 @@ func GetToken(corpid, appsecret string) string {
 	}
 
 	var token tokenBody
-	jsonERR := json.Unmarshal(body, &token)
+	jsonERR := json.NewDecoder(r.Body).Decode(&token)
 	if jsonERR != nil {
-		fmt.Println("Get Token json.Unmarshal ERR ! ", jsonERR)
+		log.Fatalln("Get Token json.NewDecoder.Decode ERR ! ", jsonERR)
 	}
 
 	return token.AccessToken
@@ -86,16 +81,16 @@ func SendMSG(accessToken string, agentid int, toparty string) {
 
 	req, err := http.Post(sendURL, "application/json", bytes.NewBuffer(paramsJSON))
 	if err != nil {
-		fmt.Println("SendMSG HTTP POST ERR ! ", err)
+		log.Fatalln("SendMSG HTTP POST ERR ! ", err)
 	}
 
 	defer req.Body.Close()
 
 	errCode := req.Header["Error-Code"][0]
 	if errCode != "0" {
-		fmt.Println("status:", req.Status)
-		fmt.Println("response Header:", req.Header)
+		log.Println("status:", req.Status)
+		log.Println("response Header:", req.Header)
 		body, _ := ioutil.ReadAll(req.Body)
-		fmt.Println("response Body:", string(body))
+		log.Println("response Body:", string(body))
 	}
 }
