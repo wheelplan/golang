@@ -1,8 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
+	"reflect"
 )
 
 func main() {
@@ -63,7 +65,35 @@ func main() {
 	//
 	//fmt.Println(name)
 
-	os.RemoveAll("./doc/mkdir")
+	//os.RemoveAll("./doc/mkdir")
+	type text struct{ content string }
+
+	type Params struct {
+		toparty string
+		msgtype string
+		agentid int
+		text    text
+		safe    int
+	}
+
+	params := &Params{
+		toparty: "da",
+		msgtype: "text",
+		agentid: 12,
+		text: text{
+			content: "message",
+		},
+		safe: 0,
+	}
+	paramsJSON, _ := json.Marshal(params)
+	fmt.Println(params, reflect.TypeOf(paramsJSON))
+
+	maps := map[string][]string{
+		"a": []string{"a", "a"},
+		"c": []string{"c", "c"},
+	}
+	fmt.Println(maps["a"])
+
 }
 
 //
