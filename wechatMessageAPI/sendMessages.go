@@ -21,8 +21,8 @@ func main() {
 
 	coinPrice := GetCoinPrice("ethusdt")
 	expectedPrice := 1400.0
-	msg := "ETH Coin Price is $" + strconv.FormatFloat(coinPrice, 'f', 20, 64)
-	message := []string{"ETH Coin Price is $", msg}
+	msg := "ETH Coin Price is $" + strconv.FormatFloat(coinPrice, 'f', 2, 64)
+	message := []string{msg}
 
 	for {
 		if coinPrice < expectedPrice {
