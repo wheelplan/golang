@@ -16,7 +16,7 @@ func main() {
 	corpid := "wwd327d0ea50c0dae0"
 	appsecret := "1kJw7t38aUxb3doG7IaLGVwOsDEuDHOMFUO2Z0xa_lI"
 	agentid := 1000008
-	toparty := os.Args[1]
+	toparty := 1
 
 	accessToken := GetToken(corpid, appsecret)
 
