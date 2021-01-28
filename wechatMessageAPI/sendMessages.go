@@ -114,14 +114,7 @@ func GetCoinPrice(coin string) float64 {
 		Tick struct {
 			ID int `json:"id"`
 			//	Ts1  time.Time `json:"ts"`
-			Data []struct {
-				//Id int `json:"id"`
-				//Ts2       time.Time `json:"ts"`
-				//TradeId   int     `json:"trade-id"`
-				//Amount    float64 `json:"amount"`
-				Price float64 `json:"price"`
-				//Direction string  `json:"direction"`
-			} `json:"data"`
+			Data []string `json:"data"`
 		} `json:"tick"`
 	}
 
