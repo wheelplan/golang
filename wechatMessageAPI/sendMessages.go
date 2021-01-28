@@ -49,7 +49,7 @@ func GetToken(corpid, appsecret string) string {
 }
 
 func SendMSG(accessToken string, agentid int, toparty string) {
-	sendMSG := "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=" + accessToken
+	sendURL := "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=" + accessToken
 	var message string
 	for _, arg := range os.Args[2:] {
 		message += arg + "\n"
@@ -77,7 +77,7 @@ func SendMSG(accessToken string, agentid int, toparty string) {
 
 	paramsJSON, _ := json.Marshal(params)
 
-	req, err := http.NewRequest("POST", sendMSG, bytes.NewBuffer(paramsJSON))
+	req, err := http.NewRequest("POST", sendURL, bytes.NewBuffer(paramsJSON))
 	if err != nil {
 		fmt.Println("HTTP POST ERR ! ", err)
 	}
