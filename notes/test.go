@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"os"
 )
 
@@ -51,18 +50,20 @@ func main() {
 
 	//os.RemoveAll("./doc/mkdir")
 
-	f, err := os.Open("./doc/mkdir")
+	//f, err := os.Open("./doc/mkdir")
+	//
+	//name, err := f.Readdir(-1)
+	//if err != nil {
+	//	log.Println("readdir", err)
+	//}
+	//
+	//for _, v := range name {
+	//	fmt.Println(v.Name(), v.IsDir(), v.Mode())
+	//}
+	//
+	//fmt.Println(name)
 
-	name, err := f.Readdir(-1)
-	if err != nil {
-		log.Println("readdir", err)
-	}
-
-	for _, v := range name {
-		fmt.Println(v.Name(), v.IsDir(), v.Mode())
-	}
-
-	fmt.Println(name)
+	os.RemoveAll("./doc/mkdir")
 }
 
 //
