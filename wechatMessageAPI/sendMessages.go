@@ -21,7 +21,7 @@ func main() {
 	accessToken := GetToken(corpid, appsecret)
 
 	coinPrice := GetCoinPrice("ethusdt")
-	expectedPrice := 1250.0
+	expectedPrice := 1400.0
 	msg := "ETH Coin Price is $" + strconv.FormatFloat(coinPrice, 'E', -1, 64)
 	message := []string{"ETH Coin Price is $", msg}
 
