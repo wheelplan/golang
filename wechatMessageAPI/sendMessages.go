@@ -109,19 +109,19 @@ func GetCoinPrice(coin string) float64 {
 
 	defer r.Body.Close()
 	type coinPrice struct {
-		Ch     string        `json:"ch"`
-		Status string        `json:"status"`
-		Ts     time.Location `json:"ts"`
+		Ch     string    `json:"ch"`
+		Status string    `json:"status"`
+		Ts     time.Time `json:"ts"`
 		Tick   struct {
-			ID   string        `json:"id"`
-			Ts1  time.Location `json:"ts"`
+			ID   string    `json:"id"`
+			Ts1  time.Time `json:"ts"`
 			Data struct {
-				Id        string        `json:"id"`
-				Ts2       time.Location `json:"ts"`
-				TradeId   string        `json:"trade-id"`
-				Amount    float64       `json:"amount"`
-				Price     float64       `json:"price"`
-				Direction string        `json:"direction"`
+				Id        string    `json:"id"`
+				Ts2       time.Time `json:"ts"`
+				TradeId   string    `json:"trade-id"`
+				Amount    float64   `json:"amount"`
+				Price     float64   `json:"price"`
+				Direction string    `json:"direction"`
 			} `json:"data"`
 		} `json:"tick"`
 	}
