@@ -108,7 +108,7 @@ func GetCoinPrice(coin string) float64 {
 
 	defer r.Body.Close()
 	type coinPrice struct {
-		Ch     int    `json:"ch"`
+		Ch     string `json:"ch"`
 		Status string `json:"status"`
 		Ts     string `json:"ts"`
 		Tick   struct {
