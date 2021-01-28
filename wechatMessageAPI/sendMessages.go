@@ -114,7 +114,14 @@ func GetCoinPrice(coin string) float64 {
 		Tick struct {
 			ID int `json:"id"`
 			//	Ts1  time.Time `json:"ts"`
-			Data []string `json:"data"`
+			Data []struct {
+				Id int `json:"id"`
+				//Ts2       time.Time `json:"ts"`
+				TradeId int `json:"trade-id"`
+				//Amount    float64 `json:"amount"`
+				Price     float64 `json:"price"`
+				Direction string  `json:"direction"`
+			} `json:"data"`
 		} `json:"tick"`
 	}
 
@@ -124,5 +131,5 @@ func GetCoinPrice(coin string) float64 {
 		log.Fatalln("Get Coin Price json.NewDecoder.Decode ERR ! ", jsonERR)
 	}
 
-	return coinprice.Tick.Data.Price
+	return coinprice.Tick.Data[0].Price
 }
