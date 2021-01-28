@@ -14,16 +14,16 @@ func main() {
 	appsecret := "1kJw7t38aUxb3doG7IaLGVwOsDEuDHOMFUO2Z0xa_lI"
 	agentid := 1000008
 	toparty := os.Args[1]
-	accessToken, _ := GetToken(corpid, appsecret)
+	accessToken := GetToken(corpid, appsecret)
 	SendMSG(accessToken, agentid, toparty)
 }
 
-func GetToken(corpid, appsecret string) (string, error) {
+func GetToken(corpid, appsecret string) string {
 	tokenURL := "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=" + corpid + "&corpsecret=" + appsecret
 
 	r, err := http.Get(tokenURL)
 	if err != nil {
-		return "Get Token http.Get ERROR ! ", err
+		fmt.Println("Get Token http.Get ERROR ! ", err)
 	}
 	defer r.Body.Close()
 
@@ -41,11 +41,11 @@ func GetToken(corpid, appsecret string) (string, error) {
 
 	var token tokenBody
 	jsonERR := json.Unmarshal(body, &token)
-	if err != nil {
+	if jsonERR != nil {
 		fmt.Println("Get Token json.Unmarshal ERR ! ", jsonERR)
 	}
 
-	return token.AccessToken, nil
+	return token.AccessToken
 }
 
 func SendMSG(accessToken string, agentid int, toparty string) {
