@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"os"
 )
@@ -31,6 +30,7 @@ func GetToken(corpid, appsecret string) string {
 	if err != nil {
 		fmt.Println("r.Body ERR ! ", err)
 	}
+	r.Body.Close()
 
 	type tokenData struct {
 		ErrCode     int    `json:"errcode"`
@@ -65,7 +65,7 @@ func SendMSG(accessToken string, agentid int, toparty string) {
 		Safe int `json:"safe"`
 	}
 
-	params := Params{
+	params := &Params{
 		Toparty: toparty,
 		Msgtype: "text",
 		Agentid: agentid,
@@ -92,9 +92,9 @@ func SendMSG(accessToken string, agentid int, toparty string) {
 	defer resp.Body.Close()
 	errCode := resp.Header["Error-Code"][0]
 	if errCode != "0" {
-		log.Println("status:", resp.Status)
-		log.Println("response Header:", resp.Header)
+		fmt.Println("status:", resp.Status)
+		fmt.Println("response Header:", resp.Header)
 		body, _ := ioutil.ReadAll(resp.Body)
-		log.Println("response Body:", string(body))
+		fmt.Println("response Body:", string(body))
 	}
 }
