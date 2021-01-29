@@ -1,8 +1,9 @@
-package wechatMessageAPI
+package main
 
 import (
 	"bytes"
 	"encoding/json"
+	"goNotes/notes/mysql"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -30,6 +31,7 @@ func main() {
 			expectedPrice = expectedPrice * 0.99
 		}
 
+		mysql.CoinMySQLData(coinPrice)
 		time.Sleep(time.Duration(6) * time.Second)
 	}
 }
