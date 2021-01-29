@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	rpc.RegisterName("He", new(Hee))
+	rpc.RegisterName("He", new(HelloService))
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		var conn io.ReadWriteCloser = struct {
@@ -25,9 +25,9 @@ func main() {
 	http.ListenAndServe(":10087", nil)
 }
 
-type Hee struct{}
+type HelloService struct{}
 
-func (p *Hee) Hello(request string, reply *string) error {
-	*reply = "hello:" + request
+func (p *HelloService) Hi(request string, reply *string) error {
+	*reply = "hi," + request
 	return nil
 }
