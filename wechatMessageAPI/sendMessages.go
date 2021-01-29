@@ -1,4 +1,4 @@
-package main
+package wechatMessageAPI
 
 import (
 	"bytes"
