@@ -1,12 +1,40 @@
-package messages
+package main
 
 import (
 	"bytes"
 	"encoding/json"
+	"goNotes/notes/mysql"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strconv"
+	"time"
 )
+
+func main() {
+
+	corpid := "wwd327d0ea50c0dae0"
+	appsecret := "1kJw7t38aUxb3doG7IaLGVwOsDEuDHOMFUO2Z0xa_lI"
+	agentid := 1000008
+	toparty := "1"
+
+	accessToken := GetToken(corpid, appsecret)
+
+	coinPrice := GetCoinPrice("ethusdt")
+	expectedPrice := 1250.00
+	msg := "ETH Coin Price is $" + strconv.FormatFloat(coinPrice, 'f', 2, 64)
+	message := []string{msg}
+
+	for {
+		if coinPrice < expectedPrice {
+			SendMSG(accessToken, agentid, toparty, message)
+			expectedPrice = expectedPrice * 0.99
+		}
+
+		mysql.CoinMySQLData(coinPrice)
+		time.Sleep(time.Duration(6) * time.Second)
+	}
+}
 
 func GetToken(corpid, appsecret string) string {
 
