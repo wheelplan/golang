@@ -4,6 +4,8 @@ import (
     "log"
     "strconv"
     "time"
+    "golang/currencyQuotes/mysql"
+    "golang/currencyQuotes/messages"
 )
 
 func main() {
@@ -16,18 +18,18 @@ func main() {
     expectedPrice := 1314.00
 
     for {
-        accessToken := GetToken(corpid, appsecret)
-        coinPrice := GetCoinPrice("ethusdt")
+        accessToken := messages.GetToken(corpid, appsecret)
+        coinPrice := messages.GetCoinPrice("ethusdt")
         msg := "ETH Coin Price is $" + strconv.FormatFloat(coinPrice, 'f', 2, 64)
         message := []string{msg}
 
         if coinPrice < expectedPrice {
-            SendMSG(accessToken, agentid, toparty, message)
+            messages.SendMSG(accessToken, agentid, toparty, message)
             expectedPrice = expectedPrice * 0.99
         }
 
         log.Println("eth: $", coinPrice)
-        CoinMySQLData(coinPrice)
+        mysql.CoinMySQLData(coinPrice)
         time.Sleep(time.Duration(6) * time.Second)
     }
 }
