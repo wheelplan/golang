@@ -15,7 +15,7 @@ func main() {
     agentid := 1000008
     toparty := "1"
 
-    expectedPrice := 1314.00
+    expectedPrice := 1333.00
 
     for {
         accessToken := messages.GetToken(corpid, appsecret)
@@ -23,9 +23,9 @@ func main() {
         msg := "ETH Coin Price is $" + strconv.FormatFloat(coinPrice, 'f', 2, 64)
         message := []string{msg}
 
-        if coinPrice < expectedPrice {
+        if coinPrice > expectedPrice {
             messages.SendMSG(accessToken, agentid, toparty, message)
-            expectedPrice = expectedPrice * 0.99
+            expectedPrice = expectedPrice * 1.01
         }
 
         log.Println("eth: $", coinPrice)

@@ -9,10 +9,10 @@ import (
 )
 
 const (
-	UserName = "lucky"
-	PassWord = "linux2020"
+	UserName = "eth"
+	PassWord = "LINUX2020"
 	NetWork  = "tcp"
-	Server   = "127.0.0.1"
+	Server   = "rocc.top"
 	Port     = 3306
 	Database = "eth"
 )
