@@ -3,10 +3,10 @@ package sms
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/tencentcloud/common"
-	"github.com/tencentcloud/common/errors"
-	"github.com/tencentcloud/common/profile"
-	sms "github.com/tencentcloud/sms/v20190711"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
+	sms "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sms/v20190711"
 )
 
 func Send(coinPrice string) {
