@@ -21,6 +21,7 @@ func main() {
 		if coinPrice > expectedPrice {
 			wechat.Send(strconv.FormatFloat(coinPrice, 'f', 2, 64))
 			sms.Send(strconv.FormatFloat(coinPrice, 'f', 2, 64))
+			expectedPrice = expectedPrice * 1.01
 		}
 
 		log.Println("eth: $", coinPrice)
