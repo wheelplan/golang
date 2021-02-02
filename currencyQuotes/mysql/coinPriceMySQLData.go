@@ -39,11 +39,10 @@ func CoinMySQLData(ethPrice float64) {
 
 }
 
-func InsertData(DB *sql.DB, ethPrice float64) {
+func InsertData(DB *sql.DB, coinPrice float64) {
 	//CST := time.FixedZone("CST", 8 * 3600)
 
-	//ethPrice := 1266.51
-	result, err := DB.Exec("insert INTO price(time,price) values(?,?)", time.Now(), ethPrice)
+	result, err := DB.Exec("insert INTO price(time,price) values(?,?)", time.Now(), coinPrice)
 	if err != nil {
 		log.Printf("Insert data failed,err:%v", err)
 		return
