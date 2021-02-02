@@ -1,19 +1,19 @@
 package main
 
 import (
-	"goNotes/currencyQuotes/price"
+	"golang/currencyQuotes/price"
 	"log"
 	"time"
 
-	"goNotes/currencyQuotes/mysql"
-	"goNotes/currencyQuotes/sms"
-	"goNotes/currencyQuotes/wechat"
+	"golang/currencyQuotes/mysql"
+	"golang/currencyQuotes/sms"
+	"golang/currencyQuotes/wechat"
 	"strconv"
 )
 
 func main() {
 
-	expectedPrice := 1420.00
+	expectedPrice := 1440.00
 
 	for {
 		coinPrice := price.GetCoinPrice("ethusdt")
