@@ -1,36 +1,30 @@
-package main                                                                                                                                     
+package main
 
 import (
-    "log"
-    "strconv"
-    "time"
-    "golang/currencyQuotes/mysql"
-    "golang/currencyQuotes/messages"
+	"goNotes/currencyQuotes/price"
+	"log"
+	"time"
+
+	"goNotes/currencyQuotes/mysql"
+	"goNotes/currencyQuotes/sms"
+	"goNotes/currencyQuotes/wechat"
+	"strconv"
 )
 
 func main() {
 
-    corpid := "wwd327d0ea50c0dae0"
-    appsecret := "1kJw7t38aUxb3doG7IaLGVwOsDEuDHOMFUO2Z0xa_lI"
-    agentid := 1000008
-    toparty := "1"
+	expectedPrice := 1420.00
 
-    expectedPrice := 1333.00
+	for {
+		coinPrice := price.GetCoinPrice("ethusdt")
 
-    for {
-        accessToken := messages.GetToken(corpid, appsecret)
-        coinPrice := messages.GetCoinPrice("ethusdt")
-        msg := "ETH Coin Price is $" + strconv.FormatFloat(coinPrice, 'f', 2, 64)
-        message := []string{msg}
+		if coinPrice > expectedPrice {
+			wechat.Send(strconv.FormatFloat(coinPrice, 'f', 2, 64))
+			sms.Send(strconv.FormatFloat(coinPrice, 'f', 2, 64))
+		}
 
-        if coinPrice > expectedPrice {
-            messages.SendMSG(accessToken, agentid, toparty, message)
-            expectedPrice = expectedPrice * 1.01
-        }
-
-        log.Println("eth: $", coinPrice)
-        mysql.CoinMySQLData(coinPrice)
-        time.Sleep(time.Duration(6) * time.Second)
-    }
+		log.Println("eth: $", coinPrice)
+		mysql.CoinMySQLData(coinPrice)
+		time.Sleep(time.Duration(6) * time.Second)
+	}
 }
-
