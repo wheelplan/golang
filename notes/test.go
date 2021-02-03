@@ -22,12 +22,15 @@ func main() {
 	//})
 	//
 	//http.ListenAndServe(":10087", nil)
-	price := map[string]float64{
-		"btcusdt":  0.00,
-		"ethusdt":  0.00,
-		"dogeusdt": 0.00,
-	}
-	fmt.Print(reflect.TypeOf(price), price["btcusdt"])
+	//price := map[string]float64{
+	//	"btcusdt":  0.00,
+	//	"ethusdt":  0.00,
+	//	"dogeusdt": 0.00,
+	//}
+	//fmt.Print(reflect.TypeOf(price), price["btcusdt"])
+
+	parameter := "currency" + " " + strconv.FormatFloat(1314.11, 'f', 2, 64)
+	fmt.Println(parameter)
 }
 
 func add(s string) {
