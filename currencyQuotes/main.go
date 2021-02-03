@@ -34,9 +34,9 @@ func main() {
 			}
 
 			log.Println(k, ": $", v)
-			mysql.CoinMySQLData(k, v)
 		}
 
+		mysql.CoinMySQLData(coinPrice)
 		time.Sleep(time.Duration(6) * time.Second)
 	}
 }
