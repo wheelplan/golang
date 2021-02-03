@@ -6,9 +6,10 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strconv"
 )
 
-func Send(coinPrice string) {
+func Send(currency string, coinPrice float64) {
 	corpid := "wwd327d0ea50c0dae0"
 	appsecret := "sm8wQYy2F8R8QTy67hcm8-rA-nbp29kjzVcOSwTdbjM"
 	agentid := 1000007
@@ -16,7 +17,7 @@ func Send(coinPrice string) {
 
 	accessToken := GetToken(corpid, appsecret)
 
-	message1 := "ETH Coin Price is $" + coinPrice
+	message1 := currency + "Price is $" + strconv.FormatFloat(coinPrice, 'f', 2, 64)
 	//message2 := ""
 	message := []string{message1}
 

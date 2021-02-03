@@ -22,9 +22,12 @@ func main() {
 	//})
 	//
 	//http.ListenAndServe(":10087", nil)
-	b := "10086"
-	fmt.Println("a" + b)
-	add("dadadada")
+	price := map[string]float64{
+		"btcusdt":  0.00,
+		"ethusdt":  0.00,
+		"dogeusdt": 0.00,
+	}
+	fmt.Print(reflect.TypeOf(price), price["btcusdt"])
 }
 
 func add(s string) {

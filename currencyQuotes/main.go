@@ -6,26 +6,35 @@ import (
 	"time"
 
 	"golang/currencyQuotes/mysql"
-//	"golang/currencyQuotes/sms"
+	//	"golang/currencyQuotes/sms"
 	"golang/currencyQuotes/wechat"
-	"strconv"
 )
 
 func main() {
 
-	expectedPrice := 1440.00
+	expectedPrice := 1520.00
 
 	for {
-		coinPrice := price.GetCoinPrice("ethusdt")
-
-		if coinPrice > expectedPrice {
-			wechat.Send(strconv.FormatFloat(coinPrice, 'f', 2, 64))
-		//	sms.Send(strconv.FormatFloat(coinPrice, 'f', 2, 64))
-			expectedPrice *= 1.01
+		coinPrice := map[string]float64{
+			"btcusdt":  0.00,
+			"ethusdt":  0.00,
+			"dogeusdt": 0.00,
 		}
 
-		log.Println("eth: $", coinPrice)
-		mysql.CoinMySQLData(coinPrice)
-		time.Sleep(time.Duration(6) * time.Second)
+		price.GetCoinPrice(coinPrice)
+
+		for k, v := range coinPrice {
+
+			if v > expectedPrice {
+				wechat.Send(k, v)
+				expectedPrice *= 1.01
+			}
+
+			log.Println(k, ": $", v)
+			mysql.CoinMySQLData(k, v)
+			time.Sleep(time.Duration(6) * time.Second)
+
+		}
+
 	}
 }
