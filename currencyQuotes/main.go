@@ -19,7 +19,7 @@ func main() {
 	}
 	expectedPrice := map[string]float64{
 		"btcusdt":  37000.00,
-		"ethusdt":  1520.00,
+		"ethusdt":  1530.00,
 		"dogeusdt": 0.034,
 	}
 
@@ -34,9 +34,9 @@ func main() {
 			}
 
 			log.Println(k, ": $", v)
-			mysql.CoinMySQLData(k, v)
 		}
 
+		mysql.CoinMySQLData(coinPrice)
 		time.Sleep(time.Duration(6) * time.Second)
 	}
 }
