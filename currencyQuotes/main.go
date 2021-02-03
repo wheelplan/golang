@@ -16,7 +16,7 @@ func main() {
 
 	sign := os.Args[1]
 	if len(os.Args) != 5 {
-		log.Fatalln("Please input: ./msg >|< btcPrice ethPrice dogePrice .")
+		log.Fatalln("Please input: ./msg '> or <' 'btcPrice' 'ethPrice' 'dogePrice' .")
 	}
 	expectedBTC, _ := strconv.ParseFloat(os.Args[2], 64)
 	expectedETH, _ := strconv.ParseFloat(os.Args[3], 64)
