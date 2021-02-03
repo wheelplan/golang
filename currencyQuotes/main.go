@@ -4,6 +4,8 @@ import (
 	"golang/currencyQuotes/mysql"
 	"golang/currencyQuotes/price"
 	"log"
+	"os"
+	"strconv"
 	"time"
 
 	//	"golang/currencyQuotes/sms"
@@ -12,6 +14,10 @@ import (
 
 func main() {
 
+	sign := os.Args[1]
+	expectedBTC, _ := strconv.ParseFloat(os.Args[2], 64)
+	expectedETH, _ := strconv.ParseFloat(os.Args[3], 64)
+	expectedDOGE, _ := strconv.ParseFloat(os.Args[4], 64)
 
 	coinPrice := map[string]float64{
 		"btcusdt":  0.00,
@@ -19,9 +25,9 @@ func main() {
 		"dogeusdt": 0.00,
 	}
 	expectedPrice := map[string]float64{
-		"btcusdt":  37000.00,
-		"ethusdt":  1570.00,
-		"dogeusdt": 0.034,
+		"btcusdt":  expectedBTC,
+		"ethusdt":  expectedETH,
+		"dogeusdt": expectedDOGE,
 	}
 
 	for {
@@ -29,12 +35,22 @@ func main() {
 
 		for k, v := range coinPrice {
 
-			if v > expectedPrice[k] {
-				wechat.Send(k, v)
-				expectedPrice[k] *= 1.01
-			}
+			if sign == ">" {
+				if v > expectedPrice[k] {
+					wechat.Send(k, v)
+					expectedPrice[k] *= 1.01
+				}
 
-			log.Println(k, ": $", v)
+				log.Println(k, ": $", v)
+
+			} else if sign == "<" {
+				if v < expectedPrice[k] {
+					wechat.Send(k, v)
+					expectedPrice[k] *= 0.99
+				}
+
+				log.Println(k, ": $", v)
+			}
 		}
 
 		mysql.CoinMySQLData(coinPrice)
