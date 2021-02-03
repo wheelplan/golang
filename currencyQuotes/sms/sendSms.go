@@ -11,8 +11,8 @@ import (
 
 func Send(coinPrice string) {
 	credential := common.NewCredential(
-		"AKIDEJ8i16pZu3vjgNsK47vTlmaBvQmtMY6d",
-		"QhiV3JZaT5Qu9PxSilX6On0xhCWeWUDj",
+		"AKIDHbr1auq2oQx61pJ8ze4IH2YqujKi8Or7",
+		"l7PPBi16vQffqojS9cr0tZ7RdTLyMdbL",
 	)
 	/* 非必要步骤:
 	 * 实例化一个客户端配置对象，可以指定超时时间等配置 */

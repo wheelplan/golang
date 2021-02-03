@@ -7,11 +7,14 @@ import (
 )
 
 func GetCoinPrice(coin string) float64 {
+
+    for {	
 	priceAPI := "https://api.huobi.pro/market/trade?symbol=" + coin
 
 	r, err := http.Get(priceAPI)
 	if err != nil {
-		log.Fatalln("Get Coin Price http.Get ERROR ! ", err)
+		log.Println("Get Coin Price http.Get ERROR ! ", err)
+		continue
 	}
 
 	defer r.Body.Close()
@@ -38,6 +41,7 @@ func GetCoinPrice(coin string) float64 {
 	if jsonERR != nil {
 		log.Fatalln("Get Coin Price json.NewDecoder.Decode ERR ! ", jsonERR)
 	}
-
+    
 	return coinprice.Tick.Data[0].Price
+    }
 }

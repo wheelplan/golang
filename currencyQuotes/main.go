@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"golang/currencyQuotes/mysql"
-	"golang/currencyQuotes/sms"
+//	"golang/currencyQuotes/sms"
 	"golang/currencyQuotes/wechat"
 	"strconv"
 )
@@ -20,7 +20,7 @@ func main() {
 
 		if coinPrice > expectedPrice {
 			wechat.Send(strconv.FormatFloat(coinPrice, 'f', 2, 64))
-			sms.Send(strconv.FormatFloat(coinPrice, 'f', 2, 64))
+		//	sms.Send(strconv.FormatFloat(coinPrice, 'f', 2, 64))
 			expectedPrice *= 1.01
 		}
 
