@@ -12,6 +12,7 @@ import (
 
 func main() {
 
+
 	coinPrice := map[string]float64{
 		"btcusdt":  0.00,
 		"ethusdt":  0.00,
@@ -19,7 +20,7 @@ func main() {
 	}
 	expectedPrice := map[string]float64{
 		"btcusdt":  37000.00,
-		"ethusdt":  1530.00,
+		"ethusdt":  1570.00,
 		"dogeusdt": 0.034,
 	}
 
