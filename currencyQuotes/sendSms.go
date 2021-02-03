@@ -1,4 +1,4 @@
-package sms
+package main
 
 import (
 	"encoding/json"
@@ -9,7 +9,7 @@ import (
 	sms "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sms/v20190711"
 )
 
-func Send(coinPrice string) {
+func smsSend(coinPrice string) {
 	credential := common.NewCredential(
 		"AKIDHbr1auq2oQx61pJ8ze4IH2YqujKi8Or7",
 		"l7PPBi16vQffqojS9cr0tZ7RdTLyMdbL",

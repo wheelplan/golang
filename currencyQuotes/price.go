@@ -1,4 +1,4 @@
-package price
+package main
 
 import (
 	"encoding/json"

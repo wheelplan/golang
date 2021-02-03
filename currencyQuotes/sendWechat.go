@@ -1,4 +1,4 @@
-package wechat
+package main
 
 import (
 	"bytes"
@@ -9,7 +9,7 @@ import (
 	"strconv"
 )
 
-func Send(currency string, coinPrice float64) {
+func wechatSend(currency string, coinPrice float64) {
 	corpid := "wwd327d0ea50c0dae0"
 	appsecret := "sm8wQYy2F8R8QTy67hcm8-rA-nbp29kjzVcOSwTdbjM"
 	agentid := 1000007
