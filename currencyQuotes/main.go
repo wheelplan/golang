@@ -1,6 +1,7 @@
 package main
 
 import (
+	"golang/currencyQuotes/msg"
 	"golang/currencyQuotes/mysql"
 	"golang/currencyQuotes/price"
 	"golang/currencyQuotes/wechat"
@@ -39,7 +40,7 @@ func main() {
 			if sign == ">" {
 				if v > expectedPrice[k] {
 					wechat.Send(k, v)
-					// msg.Send(k, v)
+					msg.Send(k, v)
 					expectedPrice[k] *= 1.01
 				}
 
@@ -48,7 +49,7 @@ func main() {
 			} else if sign == "<" {
 				if v < expectedPrice[k] {
 					wechat.Send(k, v)
-					// msg.Send(k, v)
+					msg.Send(k, v)
 					expectedPrice[k] *= 0.99
 				}
 
