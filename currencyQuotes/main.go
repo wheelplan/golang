@@ -1,6 +1,9 @@
 package main
 
 import (
+	"golang/currencyQuotes/mysql"
+	"golang/currencyQuotes/price"
+	"golang/currencyQuotes/wechat"
 	"log"
 	"os"
 	"strconv"
@@ -29,13 +32,13 @@ func main() {
 	}
 
 	for {
-		GetCoinPrice(coinPrice)
+		price.GetCoinPrice(coinPrice)
 
 		for k, v := range coinPrice {
 
 			if sign == ">" {
 				if v > expectedPrice[k] {
-					wechatSend(k, v)
+					wechat.Send(k, v)
 					expectedPrice[k] *= 1.01
 				}
 
@@ -43,7 +46,7 @@ func main() {
 
 			} else if sign == "<" {
 				if v < expectedPrice[k] {
-					wechatSend(k, v)
+					wechat.Send(k, v)
 					expectedPrice[k] *= 0.99
 				}
 
@@ -51,7 +54,7 @@ func main() {
 			}
 		}
 
-		CoinMySQLData(coinPrice)
+		mysql.CoinMySQLData(coinPrice)
 		time.Sleep(time.Duration(6) * time.Second)
 	}
 }
