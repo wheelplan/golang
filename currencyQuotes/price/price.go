@@ -2,7 +2,6 @@ package price
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -49,5 +48,5 @@ func GetCoinPrice(Price map[string]float64) {
 		Price[k] = coinprice.Tick.Data[0].Price
 	}
 	secs := time.Since(start).Seconds()
-	fmt.Println(secs)
+	log.Println(secs)
 }
