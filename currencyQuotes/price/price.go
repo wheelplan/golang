@@ -2,11 +2,14 @@ package price
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
+	"time"
 )
 
 func GetCoinPrice(Price map[string]float64) {
+	start := time.Now()
 
 	for k, _ := range Price {
 		priceAPI := "https://api.huobi.pro/market/trade?symbol=" + k
@@ -45,4 +48,6 @@ func GetCoinPrice(Price map[string]float64) {
 		// return coinprice.Tick.Data[0].Price
 		Price[k] = coinprice.Tick.Data[0].Price
 	}
+	secs := time.Since(start).Seconds()
+	fmt.Println(secs)
 }

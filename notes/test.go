@@ -1,49 +1,41 @@
+// Fetchall fetches URLs in parallel and reports their times and sizes.
 package main
 
 import (
 	"fmt"
-	"reflect"
-	"strconv"
+	"io"
+	"io/ioutil"
+	"net/http"
+	"os"
+	"time"
 )
 
 func main() {
-	//rpc.RegisterName("He", new(Hee))
-	//
-	//http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-	//	var conn io.ReadWriteCloser = struct {
-	//		io.Writer
-	//		io.ReadCloser
-	//	}{
-	//		ReadCloser: r.Body,
-	//		Writer:     w,
-	//	}
-	//
-	//	rpc.ServeRequest(jsonrpc.NewServerCodec(conn))
-	//})
-	//
-	//http.ListenAndServe(":10087", nil)
-	//price := map[string]float64{
-	//	"btcusdt":  0.00,
-	//	"ethusdt":  0.00,
-	//	"dogeusdt": 0.00,
+	start := time.Now()
+	ch := make(chan string)
+	for _, url := range os.Args[1:] {
+		go fetch(url, ch) // start a goroutine
+	}
+	<-ch
+	//for range os.Args[1:] {
+	//	fmt.Println(<-ch) // receive from channel ch
 	//}
-	//fmt.Print(reflect.TypeOf(price), price["btcusdt"])
-
-	parameter := "currency" + " " + strconv.FormatFloat(1314.11, 'f', 2, 64)
-	fmt.Println(parameter)
+	fmt.Printf("%.2fs elapsed\n", time.Since(start).Seconds())
 }
 
-func add(s string) {
-	adb := s + "da"
-	fmt.Println(adb)
-
-	f := 3.1415
-	fmt.Println(reflect.TypeOf(strconv.FormatFloat(f, 'f', 2, 64)))
-}
-
-type Hee struct{}
-
-func (p *Hee) Hello(request string, reply *string) error {
-	*reply = "hello:" + request
-	return nil
+func fetch(url string, ch chan<- string) {
+	start := time.Now()
+	resp, err := http.Get(url)
+	if err != nil {
+		ch <- fmt.Sprint(err) // send to channel ch
+		return
+	}
+	nbytes, err := io.Copy(ioutil.Discard, resp.Body)
+	resp.Body.Close() // don't leak resources
+	if err != nil {
+		ch <- fmt.Sprintf("while reading %s: %v", url, err)
+		return
+	}
+	secs := time.Since(start).Seconds()
+	ch <- fmt.Sprintf("%.2fs  %7d  %s", secs, nbytes, url)
 }
