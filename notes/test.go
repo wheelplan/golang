@@ -61,7 +61,7 @@ func fetch(url string, ch chan<- string) float64 {
 
 	// return coinprice.Tick.Data[0].Price
 	secs := time.Since(start).Seconds()
-	ch <- fmt.Sprintf("%.2fs  %7d  %s", secs, coinprice.Tick.Data[0].Price, url)
+	ch <- fmt.Sprintf("%.2fs  %8.4f  %s", secs, coinprice.Tick.Data[0].Price, url)
 
 	return coinprice.Tick.Data[0].Price
 }
