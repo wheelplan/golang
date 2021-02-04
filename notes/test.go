@@ -19,11 +19,10 @@ func main() {
 	for currency, _ := range Price {
 		priceAPI := "https://api.huobi.pro/market/trade?symbol=" + currency
 		Price[currency] = fetch(priceAPI, ch)
+		fmt.Println(<-ch)
 
 	}
-	for range Price {
-		fmt.Println(<-ch)
-	}
+
 	fmt.Printf("%.2fs elapsed\n", time.Since(start).Seconds())
 	fmt.Println(Price)
 }
