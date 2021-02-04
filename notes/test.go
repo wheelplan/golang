@@ -21,11 +21,12 @@ func main() {
 
 		go func() {
 			Price[currency] = fetch(priceAPI, ch)
+			fmt.Println(<-ch)
 		}()
 	}
-	for range Price {
-		fmt.Println(<-ch)
-	}
+	//for range Price {
+	//
+	//}
 	fmt.Printf("%.2fs elapsed\n", time.Since(start).Seconds())
 	fmt.Println(Price)
 }
