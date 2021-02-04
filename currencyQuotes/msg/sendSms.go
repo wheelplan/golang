@@ -57,7 +57,7 @@ func Send(currency string, coinPrice float64) {
 	/* 短信码号扩展号: 默认未开通，如需开通请联系 [sms helper] */
 	request.ExtendCode = common.StringPtr("0")
 	/* 模板参数: 若无模板参数，则设置为空*/
-	request.TemplateParamSet = common.StringPtrs([]string{parameter})
+	request.TemplateParamSet = common.StringPtrs([]string{currency, strconv.FormatFloat(coinPrice, 'f', 2, 64)})
 	/* 模板 ID: 必须填写已审核通过的模板 ID。模板ID可登录 [短信控制台] 查看 */
 	request.TemplateID = common.StringPtr("863665")
 	/* 下发手机号码，采用 e.164 标准，+[国家或地区码][手机号]
