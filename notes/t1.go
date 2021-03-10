@@ -18,16 +18,14 @@ func main() {
 	AccessKey := "ffde1a6e-31848ea0-45e77dbf-mn8ikls4qg"
 	timestamp := time.Now().Format("2006-01-02T15:04:05")
 
-	message := "GET\n" + "api.huobi.pro\n" + "/v2/account/asset-valuation\n" +
-		"AccessKeyId=" + AccessKey +
+	msg := "AccessKeyId=" + AccessKey +
 		"&SignatureMethod=HmacSHA256" +
 		"&SignatureVersion=2" +
-		"Timestamp=" + timestamp
+		"&Timestamp=" + timestamp
 
-	r, err := http.Get("https://api.huobi.pro/v2/account/asset-valuation?AccessKeyId=" + AccessKey +
-		"&SignatureMethod=HmacSHA256" +
-		"&SignatureVersion=2" +
-		"Timestamp=" + timestamp +
+	message := "GET\n" + "api.huobi.pro\n" + "/v2/account/asset-valuation\n" + msg
+
+	r, err := http.Get("https://api.huobi.pro/v2/account/asset-valuation?" + msg +
 		"&Signature=" + ComputeHmacSha256(message, SecretKey))
 	if err != nil {
 		log.Println("Get Coin Price http.Get ERROR ! ", err)
