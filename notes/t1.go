@@ -18,13 +18,13 @@ func main() {
 	AccessKey := "ffde1a6e-31848ea0-45e77dbf-mn8ikls4qg"
 	timestamp := time.Now().Format("2006-01-02T15:04:05")
 
-	message := "GET\n" + "api.huobi.pro\n" + "/v1/order/orders\n" +
+	message := "GET\n" + "api.huobi.pro\n" + "/v2/account/asset-valuation\n" +
 		"AccessKeyId=" + AccessKey +
 		"&SignatureMethod=HmacSHA256" +
 		"&SignatureVersion=2" +
 		"Timestamp=" + timestamp
 
-	r, err := http.Get("https://api.huobi.pro/v1/order/orders?AccessKeyId=" + AccessKey +
+	r, err := http.Get("https://api.huobi.pro/v2/account/asset-valuation?AccessKeyId=" + AccessKey +
 		"&SignatureMethod=HmacSHA256" +
 		"&SignatureVersion=2" +
 		"Timestamp=" + timestamp +
