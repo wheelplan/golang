@@ -61,6 +61,8 @@ func main() {
 		return
 	}
 
+	defer r.Body.Close()
+	
 	io.Copy(os.Stdout, r.Body)
 	if err := r.Body.Close(); err != nil {
 		fmt.Println(err)
