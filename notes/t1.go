@@ -45,6 +45,7 @@ func main() {
 		buf.WriteString(url.QueryEscape(params[k]))
 		buf.WriteString("&")
 	}
+
 	buf.Truncate(buf.Len() - 1)
 
 	hashed := hmac.New(sha256.New, []byte(SecretKey))
