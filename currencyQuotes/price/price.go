@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"time"
+	"io/ioutil"
 )
 
 func GetCoinPrice(Price map[string]float64) {
@@ -39,11 +40,12 @@ func GetCoinPrice(Price map[string]float64) {
 		}
 
 		var coinprice coinPrice
-		jsonERR := json.NewDecoder(r.Body).Decode(&coinprice)
-		if jsonERR != nil {
-			log.Fatalln("Get Coin Price json.NewDecoder.Decode ERR ! ", jsonERR)
-		}
-
+		//jsonERR := json.NewDecoder(r.Body).Decode(&coinprice)
+		//if jsonERR != nil {
+		//	log.Fatalln("Get Coin Price json.NewDecoder.Decode ERR ! ", jsonERR)
+		//}
+		body, _ := ioutil.ReadAll(r.Body)
+		_ = json.Unmarshal(body, &coinprice)
 		// return coinprice.Tick.Data[0].Price
 		Price[k] = coinprice.Tick.Data[0].Price
 	}
