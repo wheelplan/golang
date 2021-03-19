@@ -1,4 +1,4 @@
 # Golang Notes
 
 Study hard and make progress every day.
-![avatar](https://coolshell.cn/wp-content/uploads/2017/10/golang.docker.png)
+![avatar](https://miro.medium.com/max/1200/1*AemYIFm92tl5RW9nBzNSAw.jpeg)
